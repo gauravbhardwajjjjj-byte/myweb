@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CakeHeaven</title>
+    <style>
+        /* Reset */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Poppins", sans-serif;
+        }
+
+        body{
+            background:#fff4f8;
+            color:#333;
+        }
+
+        /* Floating Decorative Shapes */
+.floating-shape {
+    position: absolute;
+    width: 90px;
+    opacity: 0.4;
+    animation: float 6s infinite ease-in-out;
+    z-index: -1;
+}
+
+.shape1 { top: 80px; left: 5%; animation-delay: 0s; }
+.shape2 { top: 450px; right: 8%; animation-delay: 2s; }
+.shape3 { top: 250px; left: 70%; width: 120px; animation-delay: 1s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-22px); }
+}
+
+/* Header */
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px 50px;
+    background:white;
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff3a6e;
+}
+
+.nav {
+    display: flex;
+    gap: 30px; /* Adjust spacing between links */
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    transition: 0.3s;
+    padding: 8px 15px;
+    border-radius: 25px;
+}
+
+.nav a:hover {
+    background: #ff3a6e;
+    color: #fff;
+    transform: scale(1.05);
+}
+/* Hamburger Icon */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #ff3a6e;
+}
+
+/* Responsive Navbar */
+@media(max-width: 768px) {
+
+    .nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        background: white;
+        padding: 20px 0;
+        gap: 20px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        border-radius: 0 0 20px 20px;
+    }
+
+    .nav a {
+        width: 100%;
+        font-size: 18px;
+        padding: 12px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav.active {
+        display: flex; /* Menu opens */
+    }
+}
+
+        /* HERO SECTION */
+        .about-hero {
+            text-align:center;
+            padding:100px 20px;
+            background: linear-gradient(135deg,#ff96b8,#ff3a6e);
+            color:white;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .about-hero h1{
+            font-size:50px;
+        }
+
+        .about-hero p{
+            margin-top:15px;
+            font-size:20px;
+        }
+
+        /* ABOUT CONTENT */
+        .about-content{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding:60px 40px;
+            gap:50px;
+        }
+
+        .about-text{
+            flex:1 1 400px;
+        }
+
+        .about-text h2{
+            font-size:36px;
+            color:#ff3a6e;
+            margin-bottom:20px;
+        }
+
+        .about-text p{
+            font-size:18px;
+            line-height:1.8;
+            margin-bottom:20px;
+        }
+
+        .about-image{
+            flex:1 1 400px;
+        }
+
+        .about-image img{
+            width:100%;
+            border-radius:20px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* TEAM SECTION */
+        .team{
+            text-align:center;
+            padding:60px 20px;
+        }
+
+        .team h2{
+            font-size:36px;
+            color:#ff3a6e;
+            margin-bottom:40px;
+        }
+
+        .team-members{
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap:40px;
+        }
+
+        .member{
+            background:white;
+            padding:20px;
+            border-radius:20px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+            text-align:center;
+            max-width:250px;
+            transition:0.3s;
+        }
+
+        .member:hover{
+            transform:translateY(-10px);
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .member img{
+            width:100%;
+            border-radius:50%;
+            height:200px;
+            object-fit:cover;
+            margin-bottom:15px;
+        }
+
+        .member h3{
+            font-size:20px;
+            color:#ff3a6e;
+            margin-bottom:8px;
+        }
+
+        .member p{
+            font-size:16px;
+            color:#666;
+        }
+
+        /* FOOTER */
+        footer{
+            background:#ff3a6e;
+            color:white;
+            text-align:center;
+            padding:20px;
+            margin-top:40px;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:900px){
+            .about-content{
+                flex-direction: column;
+            }
+
+            .about-image img{
+                max-width:500px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+
+   <!-- Header -->
+<header class="header">
+    <div class="logo">CakeHeaven 🍰</div>
+
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+
+    <nav class="nav" id="nav">
+        <a href="index.html">Home</a>
+        <a href="cakemenu.html">Cakes</a>
+        <a href="cakeabout.html">About</a>
+        <a href="placeorder.html">Place Order</a>
+        <a href="cakecontact.html">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="about-hero">
+    <h1>About CakeHeaven</h1>
+    <p>Creating sweet memories with every bite!</p>
+</section>
+
+<!-- ABOUT CONTENT -->
+<section class="about-content">
+    <div class="about-text">
+        <h2>Our Story</h2>
+        <p>At CakeHeaven, we believe that cakes are not just desserts—they're memories, celebrations, and a way to bring joy to people's lives. Since our inception, we've been dedicated to crafting the most delicious, beautifully designed cakes that turn any occasion into a special one.</p>
+        <p>From classic birthday cakes to gourmet chocolate delights and fresh fruit creations, our passion is baking happiness into every bite. Our team of skilled bakers ensures every cake is a masterpiece.</p>
+    </div>
+    <div class="about-image">
+        <img src="https://img.freepik.com/premium-photo/pastry-chef-decorating-fresh-strawberry-cake_254869-3795.jpg" alt="Our Bakery">
+    </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-members">
+        <div class="member">
+            <img src="https://www.awesomecuisine.com/wp-content/uploads/2018/03/sanjeev_kapoor.jpg" alt="Chef Emma">
+            <h3>Sanjeev Kapoor</h3>
+            <p>Head Pastry Chef</p>
+        </div>
+        <div class="member">
+            <img src="https://dusbus.com/wp-content/uploads/2020/09/ManeetChauhan.jpg" alt="Chef Liam">
+            <h3>Maneet Chauhan</h3>
+            <p>Chocolate Specialist</p>
+        </div>
+        <div class="member">
+            <img src="http://bsmedia.business-standard.com/_media/bs/img/article/2016-10/23/full/1477246396-5339.jpg" alt="Chef Olivia">
+            <h3>Vikash Kanna</h3>
+            <p>Fruit Cake Artist</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav");
+
+    menuToggle.onclick = () => {
+        nav.classList.toggle("active");
+    };
+</script>
+
+
+</body>
+</html>
