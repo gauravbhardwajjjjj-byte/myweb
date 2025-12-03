@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | CakeHeaven</title>
+<style>
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #fff0f5;
+    color: #333;
+}
+
+/* Floating Decorative Shapes */
+.floating-shape {
+    position: absolute;
+    width: 90px;
+    opacity: 0.4;
+    animation: float 6s infinite ease-in-out;
+    z-index: -1;
+}
+
+.shape1 { top: 80px; left: 5%; animation-delay: 0s; }
+.shape2 { top: 450px; right: 8%; animation-delay: 2s; }
+.shape3 { top: 250px; left: 70%; width: 120px; animation-delay: 1s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-22px); }
+}
+
+/* Header */
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px 50px;
+    background: white;
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff3a6e;
+}
+
+.nav {
+    display: flex;
+    gap: 30px; /* Adjust spacing between links */
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    transition: 0.3s;
+    padding: 8px 15px;
+    border-radius: 25px;
+}
+
+.nav a:hover {
+    background: #ff3a6e;
+    color: #fff;
+    transform: scale(1.05);
+}
+/* Hamburger Icon (hidden on large screens) */
+.menu-toggle {
+    display: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #ff3a6e;
+    font-weight: bold;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Turn nav into dropdown */
+    .nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        background: white;
+        gap: 20px;
+        text-align: center;
+        padding: 25px 0;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        border-radius: 0 0 20px 20px;
+    }
+
+    .nav a {
+        width: 100%;
+        font-size: 18px;
+        padding: 10px 0;
+    }
+
+    /* Show nav when active */
+    .nav.active {
+        display: flex;
+    }
+}
+
+
+/* HERO/BANNER */
+.hero {
+    background: linear-gradient(135deg, #ff96b8, #ffc3a0);
+    text-align: center;
+    padding: 100px 20px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 20px;
+}
+
+/* SPLIT CONTACT SECTION */
+.contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 600px;
+    margin: 40px;
+    gap: 30px;
+}
+
+/* LEFT SIDE IMAGE */
+.contact-image {
+    flex: 1 1 450px;
+    background: url('https://www.mbbmanagement.com/wp-content/uploads/2017/03/bakery.jpg') no-repeat center/cover;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated bubbles */
+.contact-image::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.2) 0%, transparent 50%);
+    animation: bubble 8s infinite linear;
+}
+
+@keyframes bubble {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* RIGHT SIDE FORM + INFO */
+.contact-details {
+    flex: 1 1 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* INFO CARDS */
+.info-card {
+    background: #fff0f5;
+    padding: 30px 25px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(255,58,110,0.15);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card span {
+    font-size: 28px;
+}
+
+/* FORM */
+.contact-form {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(255,58,110,0.15);
+}
+
+.contact-form h2 {
+    color: #ff3a6e;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: 1px solid #ffafbd;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ff3a6e;
+    outline: none;
+    box-shadow: 0 0 10px rgba(255,58,110,0.2);
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form button {
+    background: linear-gradient(135deg, #ff96b8, #ff3a6e);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255,58,110,0.3);
+}
+
+/* FOOTER */
+footer {
+    background: #ff3a6e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px){
+    .contact-section {
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+}
+</style>
+</head>
+<body>
+
+
+    <!-- Header -->
+<header class="header">
+    <div class="logo">CakeHeaven 🍰</div>
+
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+
+    <nav class="nav" id="nav">
+        <a href="index.html">Home</a>
+        <a href="cakemenu.html">Cakes</a>
+        <a href="cakeabout.html">About</a>
+        <a href="placeorder.html">Place Order</a>
+        <a href="cakecontact.html">Contact</a>
+    </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Get in Touch</h1>
+    <p>We'd love to hear your thoughts, orders, or questions!</p>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+    
+    <!-- LEFT IMAGE -->
+    <div class="contact-image"></div>
+
+    <!-- RIGHT FORM & INFO -->
+    <div class="contact-details">
+        
+        <!-- INFO CARDS -->
+        <div class="info-card">
+            <span>📍</span>
+            <p>123 Sweet Street, Dessert City, CA</p>
+        </div>
+
+        <div class="info-card">
+            <span>📞</span>
+            <p>+1 234 567 890</p>
+        </div>
+
+        <div class="info-card">
+            <span>✉️</span>
+            <p>hello@cakeheaven.com</p>
+        </div>
+
+        <!-- FORM -->
+        <div class="contact-form">
+            <h2>Send a Message</h2>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav");
+
+    menuToggle.onclick = () => {
+        nav.classList.toggle("active");
+    };
+</script>
+
+</body>
+</html>
