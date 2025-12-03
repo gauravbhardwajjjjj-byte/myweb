@@ -1,0 +1,362 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Menu | CakeHeaven</title>
+
+<style>
+
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    background:#fff4f8;
+}
+/* Floating Decorative Shapes */
+.floating-shape {
+    position: absolute;
+    width: 90px;
+    opacity: 0.4;
+    animation: float 6s infinite ease-in-out;
+    z-index: -1;
+}
+
+.shape1 { top: 80px; left: 5%; animation-delay: 0s; }
+.shape2 { top: 450px; right: 8%; animation-delay: 2s; }
+.shape3 { top: 250px; left: 70%; width: 120px; animation-delay: 1s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-22px); }
+}
+
+/* Header */
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px 50px;
+    background:white;
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff3a6e;
+}
+
+.nav {
+    display: flex;
+    gap: 30px; /* Adjust spacing between links */
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    transition: 0.3s;
+    padding: 8px 15px;
+    border-radius: 25px;
+}
+
+.nav a:hover {
+    background: #ff3a6e;
+    color: #fff;
+    transform: scale(1.05);
+}
+/* Hamburger Icon */
+.menu-toggle {
+    display: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #ff3a6e;
+    font-weight: bold;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Stack Nav as dropdown */
+    .nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        background: white;
+        text-align: center;
+        padding: 20px 0;
+        gap: 20px;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    }
+
+    .nav a {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 18px;
+    }
+
+    /* Show when active */
+    .nav.active {
+        display: flex;
+    }
+}
+
+/* HERO */
+.menu-hero {
+    text-align:center;
+    padding:70px 20px;
+    background:linear-gradient(135deg,#ff96b8,#ff3a6e);
+    color:white;
+    clip-path:ellipse(150% 100% at 50% 0%);
+}
+
+.menu-hero h2{
+    font-size:40px;
+}
+
+.menu-hero p{
+    margin-top:10px;
+    font-size:18px;
+}
+
+/* TABS BUTTONS */
+.tabs {
+    text-align:center;
+    margin:30px 0;
+}
+
+.tab-btn {
+    padding:10px 22px;
+    margin:5px;
+    border-radius:20px;
+    background:#ffc7d9;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+    background:#ff3a6e;
+    color:white;
+}
+
+/* MENU GRID */
+.menu-grid{
+    padding:30px 40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:35px;
+}
+
+/* CARD */
+.menu-card{
+    background:white;
+    border-radius:18px;
+    box-shadow:0 5px 18px rgba(0,0,0,0.1);
+    overflow:hidden;
+    transition:0.3s;
+    text-align:center;
+}
+
+.menu-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.menu-card img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+}
+
+.info{
+    padding:20px;
+}
+
+.price{
+    margin-top:12px;
+    display:inline-block;
+    padding:8px 18px;
+    background:#ff3a6e;
+    color:white;
+    border-radius:25px;
+}
+
+/* FOOTER */
+footer{
+    background:#ff3a6e;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+
+
+   <!-- Header -->
+<header class="header">
+    <div class="logo">CakeHeaven 🍰</div>
+
+    <!-- Hamburger Menu Icon -->
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+
+    <nav class="nav" id="nav">
+        <a href="index.html">Home</a>
+        <a href="cakemenu.html">Cakes</a>
+        <a href="cakeabout.html">About</a>
+        <a href="placeorder.html">Place Order</a>
+        <a href="cakecontact.html">Contact</a>
+    </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="menu-hero">
+    <h2>Our Cake Menu</h2>
+    <p>Fresh, delicious & beautifully crafted cakes for every celebration.</p>
+</section>
+
+<!-- CATEGORY FILTER TABS -->
+<div class="tabs">
+    <button class="tab-btn active" onclick="filterCakes('all')">All</button>
+    <button class="tab-btn" onclick="filterCakes('birthday')">Birthday Cakes</button>
+    <button class="tab-btn" onclick="filterCakes('chocolate')">Chocolate Cakes</button>
+    <button class="tab-btn" onclick="filterCakes('fruit')">Fruit Cakes</button>
+</div>
+
+<!-- CAKES GRID -->
+<section class="cakes menu-grid">
+
+    <!-- BIRTHDAY -->
+    <div class="menu-card cake birthday">
+        <img src="https://i.pinimg.com/736x/b6/7c/3b/b67c3b0127d0325c46d64fc62d7b8ba6.jpg">
+        <div class="info">
+            <h3>Strawberry Birthday Cake</h3>
+            <p>Perfect for celebrations!</p>
+            <span class="price">₹1000</span>
+        </div>
+    </div>
+
+    <div class="menu-card cake birthday">
+        <img src="https://i.pinimg.com/originals/a5/c1/e4/a5c1e4495c9597c8c5f236a35714092a.jpg">
+        <div class="info">
+            <h3>Red Velvet Birthday</h3>
+            <p>Soft & creamy delight.</p>
+            <span class="price">₹500</span>
+        </div>
+    </div>
+
+    <!-- CHOCOLATE -->
+    <div class="menu-card cake chocolate">
+        <img src="https://i.pinimg.com/originals/94/21/bf/9421bf8c5941eb50393ec90b1ea0aeba.jpg">
+        <div class="info">
+            <h3>Chocolate Heaven</h3>
+            <p>Rich creamy chocolate delight.</p>
+            <span class="price">₹499</span>
+        </div>
+    </div>
+
+    <div class="menu-card cake chocolate">
+        <img src="https://img.freepik.com/premium-photo/black-forest-chocolate-cake-with-cherries_1257227-177.jpg">
+        <div class="info">
+            <h3>Black Forest</h3>
+            <p>Chocolate + cherries classic.</p>
+            <span class="price">₹350</span>
+        </div>
+    </div>
+
+    <!-- FRUIT -->
+    <div class="menu-card cake fruit">
+        <img src="https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/yxicmtgb/dcb57a4a-2626-4328-b9a3-a5ce1fbb586a.png">
+        <div class="info">
+            <h3>Fruit Paradise</h3>
+            <p>Loaded with fresh fruits.</p>
+            <span class="price">₹299</span>
+        </div>
+    </div>
+
+    <div class="menu-card cake fruit">
+        <img src="https://i.redd.it/uw7jm5wdm3y81.jpg">
+        <div class="info">
+            <h3>Vanilla Fruit Cake</h3>
+            <p>Vanilla cream & fruit slices.</p>
+            <span class="price">₹499</span>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- JAVASCRIPT FILTER FUNCTION -->
+<script>
+function filterCakes(category) {
+    let cakes = document.querySelectorAll('.cake');
+    let buttons = document.querySelectorAll('.tab-btn');
+
+    // Remove active class from all buttons
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    // Add active class to clicked button
+    event.target.classList.add('active');
+
+    // Set different image heights based on category
+    let newHeight;
+
+    if (category === 'birthday') newHeight = "600px";
+    else if (category === 'chocolate') newHeight = "600px";
+    else if (category === 'fruit') newHeight = "600px";
+    else newHeight = "350px"; // For "All"
+
+    // Filter & resize
+    cakes.forEach(cake => {
+        let img = cake.querySelector("img");
+
+        if (category === 'all') {
+            cake.style.display = "block";
+        } else {
+            cake.style.display = cake.classList.contains(category) ? "block" : "none";
+        }
+
+        // Apply height
+        img.style.height = newHeight;
+    });
+}
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav");
+
+    toggle.onclick = () => {
+        nav.classList.toggle("active");
+    };
+
+</script>
+
+</body>
+</html>
