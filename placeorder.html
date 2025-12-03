@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CakeHeaven | Online Order & Menu</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+body{
+    background:#fff0f5;
+    color:#333;
+}
+.header{
+    position:fixed;
+    width:100%;
+    top:0;
+    padding:20px 50px;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#ff3a6e;
+}
+.nav{
+    display:flex;
+    gap:30px;
+}
+.nav a{
+    text-decoration:none;
+    padding:8px 15px;
+    color:#333;
+    border-radius:25px;
+    font-weight:600;
+}
+.nav a:hover{
+    background:#ff3a6e;
+    color:#fff;
+}
+/* Hamburger Button */
+.menu-toggle {
+    display: none;
+    font-size: 35px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ff3a6e;
+}
+
+/* RESPONSIVE NAVIGATION */
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background: white;
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        gap: 20px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        border-radius: 0 0 20px 20px;
+    }
+
+    .nav a {
+        font-size: 18px;
+        padding: 12px 0;
+        width: 100%;
+    }
+
+    /* Show menu when active */
+    .nav.active {
+        display: flex;
+    }
+
+    /* Fix hero padding so it doesn't hide behind header */
+    .hero {
+        padding-top: 140px;
+    }
+}
+
+
+.hero{
+    background:linear-gradient(135deg,#ff96b8,#ffc3a0);
+    text-align:center;
+    padding:100px 20px;
+    color:white;
+}
+.section-title{
+    text-align:center;
+    margin-top:50px;
+    color:#ff3a6e;
+    font-size:32px;
+    font-weight:700;
+}
+.filter-btns{
+    text-align:center;
+    margin:20px 0;
+}
+.filter-btns button{
+    background:#ff96b8;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:20px;
+    margin:5px;
+    cursor:pointer;
+    font-weight:600;
+}
+.filter-btns button:hover,
+.filter-btns button.active{
+    background:#ff3a6e;
+}
+.product-section{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+.product-card{
+    background:white;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(255,58,110,0.15);
+    text-align:center;
+    overflow:hidden;
+    transition:0.3s;
+}
+.product-card:hover{
+    transform:translateY(-10px);
+}
+.product-card img{
+    width:100%;
+    height:300px; /* default height, will be updated by JS */
+    object-fit:cover;
+    transition: height 0.5s; /* smooth height change */
+}
+.product-info{
+    padding:20px;
+}
+.product-info .price{
+    color:#ff3a6e;
+    font-weight:bold;
+    font-size:18px;
+}
+.quantity input{
+    width:60px;
+    padding:5px;
+    margin-top:10px;
+}
+/* ORDER SUMMARY */
+.order-summary {
+    background: #fff0f5;
+    padding: 30px 20px;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 10px 25px rgba(255,58,110,0.15);
+    text-align: center;
+}
+
+.order-summary h2 {
+    color: #ff3a6e;
+    margin-bottom: 20px;
+}
+
+.order-summary p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.order-summary button {
+    background: linear-gradient(135deg, #ff96b8, #ff3a6e);
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.order-summary button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255,58,110,0.3);
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">CakeHeaven 🍰</div>
+
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+
+    <nav class="nav" id="nav">
+        <a href="index.html">Home</a>
+        <a href="cakemenu.html">Cakes</a>
+        <a href="cakeabout.html">About</a>
+        <a href="placeorder.html">Place Order</a>
+        <a href="cakecontact.html">Contact</a>
+    </nav>
+</header>
+
+
+<section class="hero">
+    <h1>Order Your Favorite Cake Online</h1>
+    <p>Delicious cakes delivered fresh to your door!</p>
+</section>
+
+<section class="product-section" id="cakes">
+    <h2 class="section-title">Our Cake Menu</h2>
+
+    <div class="filter-btns">
+        <button class="active" onclick="filterCakes('all', this)">All</button>
+        <button onclick="filterCakes('birthday', this)">Birthday Cake</button>
+        <button onclick="filterCakes('chocolate', this)">Chocolate Cake</button>
+        <button onclick="filterCakes('fruit', this)">Fruit Cake</button>
+    </div>
+
+    <div class="product-grid">
+
+        <!-- Birthday cakes -->
+        <div class="product-card" data-category="birthday">
+            <img src="https://i.pinimg.com/736x/b6/7c/3b/b67c3b0127d0325c46d64fc62d7b8ba6.jpg">
+            <div class="product-info">
+                <h3>Strawberry Cake</h3>
+                <p>Fresh strawberries and cream</p>
+                <div class="price" data-price="1000">₹1000</div>
+                <div class="quantity"><input type="number" class="qty" min="0" value="0"></div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="birthday">
+            <img src="https://i.pinimg.com/originals/a5/c1/e4/a5c1e4495c9597c8c5f236a35714092a.jpg">
+            <div class="product-info">
+                <h3>Red Velvet</h3>
+                <p>Classic red velvet with cream cheese frosting</p>
+                <div class="price" data-price="500">₹500</div>
+                <div class="quantity"><input type="number" class="qty" min="0" value="0"></div>
+            </div>
+        </div>
+
+        <!-- Chocolate cakes -->
+        <div class="product-card" data-category="chocolate">
+            <img src="https://i.pinimg.com/originals/94/21/bf/9421bf8c5941eb50393ec90b1ea0aeba.jpg">
+            <div class="product-info">
+                <h3>Chocolate Heaven</h3>
+                <p>Rich chocolate delight</p>
+                <div class="price" data-price="499">₹499</div>
+                <div class="quantity"><input type="number" class="qty" min="0" value="0"></div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="chocolate">
+            <img src="https://img.freepik.com/premium-photo/black-forest-chocolate-cake-with-cherries_1257227-177.jpg">
+            <div class="product-info">
+                <h3>Black Forest</h3>
+                <p>Chocolate cake with cherries</p>
+                <div class="price" data-price="350">₹350</div>
+                <div class="quantity"><input type="number" class="qty" min="0" value="0"></div>
+            </div>
+        </div>
+
+        <!-- Fruit cakes -->
+        <div class="product-card" data-category="fruit">
+            <img src="https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/yxicmtgb/dcb57a4a-2626-4328-b9a3-a5ce1fbb586a.png">
+            <div class="product-info">
+                <h3>Fruit Paradise</h3>
+                <p>Loaded with fresh fruits</p>
+                <div class="price" data-price="299">₹299</div>
+                <div class="quantity"><input type="number" class="qty" min="0" value="0"></div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="fruit">
+            <img src="https://i.redd.it/uw7jm5wdm3y81.jpg">
+            <div class="product-info">
+                <h3>Vanilla Dream</h3>
+                <p>Soft vanilla cake with buttercream</p>
+                <div class="price" data-price="499">₹499</div>
+                <div class="quantity"><input type="number" class="qty" min="0" value="0"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="order-summary">
+    <h2>Your Order</h2>
+    <p>Total Items: <span id="total-items">0</span></p>
+    <p>Total Price:₹<span id="total-price">0</span></p>
+     <button onclick="placeOrder()">Place Order</button>
+</div>
+
+<script>
+function filterCakes(category, btn) {
+    const cards = document.querySelectorAll('.product-card');
+
+    cards.forEach(card => {
+        const img = card.querySelector('img');
+        if (category === "all" || card.dataset.category.includes(category)) {
+            card.style.display = "block";
+
+            // Set image height based on category
+            if (category === "birthday") img.style.height = "600px";
+            else if (category === "chocolate") img.style.height = "600px";
+            else if (category === "fruit") img.style.height = "600px";
+            else img.style.height = "300px"; // default for "All"
+        } else {
+            card.style.display = "none";
+            img.style.height = "300px"; // reset hidden images
+        }
+    });
+
+    document.querySelectorAll(".filter-btns button")
+        .forEach(b => b.classList.remove("active"));
+
+    btn.classList.add("active");
+}
+
+// Cart update script remains the same
+const totalItemsEl = document.getElementById("total-items");
+const totalPriceEl = document.getElementById("total-price");
+
+function updateOrder() {
+    let items = 0;
+    let price = 0;
+
+    document.querySelectorAll(".product-card").forEach(card => {
+        const qtyInput = card.querySelector(".qty");
+        const qty = parseInt(qtyInput.value);
+        const cakePrice = parseInt(card.querySelector(".price").dataset.price);
+
+        items += qty;
+        price += qty * cakePrice;
+    });
+
+    totalItemsEl.innerText = items;
+    totalPriceEl.innerText = price;
+}
+
+document.querySelectorAll(".qty").forEach(input => {
+    input.addEventListener("input", updateOrder);
+});
+function placeOrder() {
+    if (parseInt(totalItemsEl.innerText) === 0) {
+        alert("Please select at least one cake to order!");
+    } else {
+        alert(`Thank you for your order!\nTotal Items: ${totalItemsEl.innerText}\nTotal Price:₹${totalPriceEl.innerText}`);
+        // Reset order
+        document.querySelectorAll(".product-card").forEach(input => input.value = 0);
+        updateOrder();
+    }
+}
+
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav");
+
+    toggle.onclick = () => {
+        nav.classList.toggle("active");
+    };
+</script>
+
+
+
+</body>
+</html>
