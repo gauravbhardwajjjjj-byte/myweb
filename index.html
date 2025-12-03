@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Heaven | Home</title>
+    <link rel="stylesheet" href="style.css">
+	<style>
+	/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #fff4f8;
+    overflow-x: hidden;
+}
+
+/* Floating Decorative Shapes */
+.floating-shape {
+    position: absolute;
+    width: 90px;
+    opacity: 0.4;
+    animation: float 6s infinite ease-in-out;
+    z-index: -1;
+}
+
+.shape1 { top: 80px; left: 5%; animation-delay: 0s; }
+.shape2 { top: 450px; right: 8%; animation-delay: 2s; }
+.shape3 { top: 250px; left: 70%; width: 120px; animation-delay: 1s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-22px); }
+}
+
+/* Header */
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px 50px;
+    background: white;
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff3a6e;
+}
+
+.nav {
+    display: flex;
+    gap: 30px; /* Adjust spacing between links */
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    transition: 0.3s;
+    padding: 8px 15px;
+    border-radius: 25px;
+}
+
+.nav a:hover {
+    background: #ff3a6e;
+    color: #fff;
+    transform: scale(1.05);
+}
+/* Hamburger icon (hidden by default) */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #ff3a6e;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+
+    .nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        display: none;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        border-radius: 0 0 15px 15px;
+    }
+
+    .nav a {
+        padding: 10px 20px;
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Show hamburger icon */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Show menu when active */
+    .nav.active {
+        display: flex;
+    }
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(to right, #ff9abb6b, #ff3a6e6b),
+                url("https://t4.ftcdn.net/jpg/05/63/62/07/360_F_563620783_9icanRCanLxCe2h7SzwhSQvoEqS9RWSG.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 0 20px;
+}
+
+.hero-content {
+    color: #fff;
+    max-width: 700px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 55px;
+    font-weight: 800;
+}
+
+.hero p {
+    margin: 10px 0 20px;
+    font-size: 18px;
+}
+
+.hero-btn {
+    padding: 15px 35px;
+    background: #ff3a6e;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background: #e02a5c;
+    transform: scale(1.05);
+}
+
+/* SVG Wave */
+.wave svg {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+}
+
+/* Cakes Section */
+.cakes {
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 36px;
+    color: #ff3a6e;
+    margin-bottom: 40px;
+}
+
+.cake-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.cake-card {
+    width: 300px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    padding-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: 0.4s;
+}
+
+.card-bg {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    background: #ff3a6e;
+    opacity: 0.15;
+    border-radius: 50%;
+}
+
+.cake-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.cake-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.cake-card h3 {
+    margin-top: 15px;
+    color: #ff3a6e;
+}
+
+.cake-card p {
+    padding: 0 15px;
+    font-size: 15px;
+}
+
+/* About Section */
+.about {
+    background: linear-gradient(to bottom, #fff4f8, #ffd0dc);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.about h2 {
+    color: #ff3a6e;
+    font-size: 32px;
+}
+
+.about p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+/* Footer */
+.footer {
+    background: #ff3a6e;
+    color: white;
+    padding: 25px 10px;
+    text-align: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+	</style>
+</head>
+<body>
+
+    <!-- Header -->
+    <!-- Header -->
+<header class="header">
+    <div class="logo">CakeHeaven 🍰</div>
+
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle" id="menu-toggle">
+        ☰
+    </div>
+
+    <nav class="nav" id="nav">
+        <a href="index.html">Home</a>
+        <a href="cakemenu.html">Cakes</a>
+        <a href="cakeabout.html">About</a>
+        <a href="placeorder.html">Place Order</a>
+        <a href="cakecontact.html">Contact</a>
+    </nav>
+</header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Delicious Cakes Crafted with Love</h1>
+            <p>Premium-quality cakes baked fresh every day.</p>
+            <a href="#cakes" class="hero-btn">Explore Cakes</a>
+        </div>
+
+        <!-- SVG Wave -->
+        <div class="wave">
+            <svg viewBox="0 0 1440 320">
+                <path fill="#fff4f8" 
+                    d="M0,160L60,165.3C120,171,240,181,360,160C480,139,600,85,720,96C840,107,960,181,1080,197.3C1200,213,1320,171,1380,149.3L1440,128V320H0Z">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Cakes Section -->
+    <section id="cakes" class="cakes">
+        <h2 class="section-title">Our Special Cakes</h2>
+
+        <div class="cake-grid">
+
+            <div class="cake-card">
+                <div class="card-bg"></div>
+                <img src="https://i.pinimg.com/736x/ee/c7/d9/eec7d9abc8ff72daec18dad014570ecd.jpg" alt="Chocolate Cake">
+                <h3>Chocolate Heaven</h3>
+                <p>Rich cocoa layers topped with creamy chocolate frosting.</p>
+            </div>
+
+            <div class="cake-card">
+                <div class="card-bg"></div>
+                <img src="https://i.pinimg.com/originals/c2/d7/9a/c2d79a7e86d9e8553dd86d1b78d0821b.jpg" alt="Strawberry Cake">
+                <h3>Strawberry Dream</h3>
+                <p>Fresh strawberries in every soft, fluffy slice.</p>
+            </div>
+
+            <div class="cake-card">
+                <div class="card-bg"></div>
+                <img src="https://palermo365shop.com/wp-content/uploads/2023/05/grad-cake-1.jpg" alt="Vanilla Cake">
+                <h3>Vanilla Bliss</h3>
+                <p>Smooth, classic, and filled with vanilla cream.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section with Curve -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>We create handcrafted cakes full of flavor and joy, baking only with the freshest ingredients. Every slice tells a story of sweetness!</p>
+    </section>
+
+<script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav");
+
+    menuToggle.onclick = () => {
+        nav.classList.toggle("active");
+    };
+</script>
+
+</body>
+
+</html>
